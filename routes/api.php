@@ -22,9 +22,6 @@ Route::middleware('auth:api', 'applicant')->group(function () {
     //job posts
     Route::get('/users/{user}/job-postings', 'App\Http\Controllers\JobPostingController@index');
     Route::get('/users/{user}/job-postings/{jobPosting}', 'App\Http\Controllers\JobPostingController@show');
-    Route::post('/users/{user}/job-postings', 'App\Http\Controllers\JobPostingController@store');
-    Route::patch('/users/{user}/job-postings/{jobPosting}', 'App\Http\Controllers\JobPostingController@update');
-    Route::delete('/users/{user}/job-postings/{jobPosting}', 'App\Http\Controllers\JobPostingController@delete');
 
     //applications
     Route::get('/users/{user}/applications', 'App\Http\Controllers\ApplicationController@index');
@@ -35,3 +32,9 @@ Route::middleware('auth:api', 'applicant')->group(function () {
 
 });
 
+Route::middleware('auth:api', 'company')->group(function () {
+    Route::get('/users/{user}/applicants', 'App\Http\Controllers\ApplicantsController@index');
+    Route::post('/users/{user}/job-postings', 'App\Http\Controllers\JobPostingController@store');
+    Route::patch('/users/{user}/job-postings/{jobPosting}', 'App\Http\Controllers\JobPostingController@update');
+    Route::delete('/users/{user}/job-postings/{jobPosting}', 'App\Http\Controllers\JobPostingController@delete');
+});

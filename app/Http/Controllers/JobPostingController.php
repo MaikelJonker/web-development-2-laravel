@@ -10,7 +10,7 @@ class JobPostingController extends Controller
 {
     public function index(Request $request, User $user)
     {
-        return $user->jobPostings;
+        return JobPosting::get();
     }
 
     public function show(Request $request, User $user, JobPosting $jobPosting)
